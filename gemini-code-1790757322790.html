@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บันทึกการแต่งสี / ဆေးရောင်ပြင်ဆင်မှု မှတ်တမ်း</title>
+  <style>
+    :root {
+      --bg-color: #f4f0ea;
+      --card-bg: #ffffff;
+      --input-bg: #f9f8f6;
+      --text-color: #4a4a4a;
+      --text-muted: #7d7d7d;
+      --accent-color: #b5c0d0;
+      --accent-hover: #9bb0c1;
+      --button-bg: #eed7ce;
+      --button-hover: #e0bebe;
+      --button-text: #5c4b4b;
+      --success-color: #94b49f;
+      --border-color: #e5e0d8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      padding: 32px 28px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #3b3b3b;
+      line-height: 1.4;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .myanmar-text {
+      font-size: 0.85rem;
+      color: #8c8c8c;
+      display: inline-block;
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      background-color: var(--input-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-color);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      border-color: var(--accent-hover);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(181, 192, 208, 0.25);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      text-align: center;
+      display: block;
+      line-height: 1.4;
+    }
+
+    .btn:hover {
+      background-color: var(--button-hover);
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .btn:disabled {
+      background-color: #e0e0e0;
+      color: #a0a0a0;
+      cursor: not-allowed;
+    }
+
+    /* Screen View Management */
+    .view-screen {
+      display: block;
+    }
+
+    .view-screen.hidden {
+      display: none;
+    }
+
+    /* Success Screen Details */
+    .success-icon {
+      width: 70px;
+      height: 70px;
+      background-color: #e8f3ed;
+      color: var(--success-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 20px auto;
+      border: 2px solid var(--success-color);
+    }
+
+    .success-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #3b3b3b;
+      text-align: center;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    iframe {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- หน้า 1: ฟอร์มกรอกข้อมูล -->
+    <div id="formScreen" class="view-screen">
+      <h1>บันทึกการแต่งสี<br><span class="myanmar-text" style="font-size: 1.1rem;">ဆေးရောင်ပြင်ဆင်မှု မှတ်တမ်း</span></h1>
+
+      <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
+
+      <form 
+        id="customForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScimpnLhm0cA8MzUxrswDWq2PObC5bu2UtAnzbC0OCKfDQgHA/formResponse" 
+        method="POST" 
+        target="hidden_iframe"
+        onsubmit="handleSubmit()"
+      >
+        <!-- 1. หมายเลขโต๊ะ -->
+        <div class="form-group">
+          <label for="table_num">1. หมายเลขโต๊ะ <span class="myanmar-text">/ စားပွဲနံပါတ်</span></label>
+          <input type="text" id="table_num" name="entry.1510638343" required>
+        </div>
+
+        <!-- 2. จำนวนคนทำงาน -->
+        <div class="form-group">
+          <label for="worker_count">2. จำนวนคนทำงาน <span class="myanmar-text">/ အလုပ်သမားဦးရေ</span></label>
+          <input type="number" id="worker_count" name="entry.1325147205" required>
+        </div>
+
+        <!-- 3. รหัสพนักงานคนที่1 -->
+        <div class="form-group">
+          <label for="emp_1">3. รหัสพนักงานคนที่1 <span class="myanmar-text">/ ဝန်ထမ်းအိုင်ဒီ ၁</span></label>
+          <input type="text" id="emp_1" name="entry.1952519567" required>
+        </div>
+
+        <!-- 4. รหัสพนักงานคนที่2 -->
+        <div class="form-group">
+          <label for="emp_2">4. รหัสพนักงานคนที่2 <span class="myanmar-text">/ ဝန်ထမ်းအိုင်ဒီ ၂</span></label>
+          <input type="text" id="emp_2" name="entry.1095757181">
+        </div>
+
+        <!-- 5. PRO -->
+        <div class="form-group">
+          <label for="pro">5. PRO <span class="myanmar-text">/ PRO</span></label>
+          <input type="text" id="pro" name="entry.685893669" required>
+        </div>
+
+        <!-- 6. จำนวนที่ทำสำเร็จ -->
+        <div class="form-group">
+          <label for="success_count">6. จำนวนที่ทำสำเร็จ <span class="myanmar-text">/ ပြီးစီးသည့် အရေအတွက်</span></label>
+          <input type="number" id="success_count" name="entry.420242264" required>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn">
+          บันทึกข้อมูล<br><span style="font-size: 0.85rem; font-weight: normal;">အချက်အလက်များကို သိမ်းဆည်းပါ</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- หน้า 2: แสดงผลบันทึกเสร็จสิ้น -->
+    <div id="successScreen" class="view-screen hidden">
+      <div class="success-icon">✓</div>
+      <div class="success-title">
+        บันทึกเสร็จสิ้น<br><span class="myanmar-text" style="font-size: 1.1rem; color: #555;">သိမ်းဆည်းပြီးပါပြီ</span>
+      </div>
+      <button type="button" class="btn" onclick="resetToForm()">
+        บันทึกข้อมูลเพิ่มเติม<br><span style="font-size: 0.85rem; font-weight: normal;">အချက်အလက်များ ထပ်မံထည့်သွင်းရန်</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let submitted = false;
+
+    // ทำงานหลังจากส่งข้อมูลไปยัง Google Form ผ่าน iframe สำเร็จ
+    document.getElementById('hidden_iframe').onload = function() {
+      if (submitted) {
+        document.getElementById('formScreen').classList.add('hidden');
+        document.getElementById('successScreen').classList.remove('hidden');
+        
+        // ล้างค่าในฟอร์ม
+        document.getElementById('customForm').reset();
+        
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'บันทึกข้อมูล<br><span style="font-size: 0.85rem; font-weight: normal;">အချက်အလက်များကို သိမ်းဆည်းပါ</span>';
+        submitted = false;
+      }
+    };
+
+    function handleSubmit() {
+      submitted = true;
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'กำลังบันทึก...<br><span style="font-size: 0.85rem; font-weight: normal;">သိမ်းဆည်းနေပါသည်...</span>';
+    }
+
+    function resetToForm() {
+      document.getElementById('successScreen').classList.add('hidden');
+      document.getElementById('formScreen').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
